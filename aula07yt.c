@@ -83,6 +83,7 @@ void delete(int pos){
         free(lixo);
         tam--;
 
+        //3 - queremos remover no meio ou fim
         }else{
             no *aux = inicio; //definindo o endereço de variável pra onde queremos apontar, no caso, para o início
             for(int i = 0; i < pos-1; i++){
@@ -98,7 +99,6 @@ void delete(int pos){
             tam--;
 
         }
-        //3 - queremos remover no meio ou fim
     }
 
     return retorno;
@@ -106,10 +106,13 @@ void delete(int pos){
 
 void alterar(int valor, int pos){
     no *aux = inicio; //definindo o endereço de variável pra onde queremos apontar, no caso, para o início
-    for(int i = 0; i < pos; i++){
-        aux = aux->prox;
+    
+    if (pos >= 0 && pos < tam){
+        for(int i = 0; i < pos; i++){
+            aux = aux->prox; //caminhando com o auxiliar até antes da posição desejada (para apontar para o elemento da posição desejada)
+        }
+        aux->valor = valor; //alterando com o novo valor
     }
-    aux->valor = valor;
 
 }
 
@@ -117,9 +120,9 @@ void search(int pos){
     
     no *aux = inicio; //definindo o endereço de variável pra onde queremos apontar, no caso, para o início
     for(int i = 0; i < pos; i++){
-        aux = aux->prox;
+        aux = aux->prox; //caminhando com o auxiliar até antes da posição desejada (para apontar para o elemento da posição desejada)
     }
-    printf("%d\n", aux->valor);
+    printf("%d\n", aux->valor); //imprimindo o valor da posição
 
 }
 
